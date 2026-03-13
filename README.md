@@ -2,12 +2,15 @@
 
 ## Project Information
 
-Please complete the following before submitting your repository.
-
-**Project Name:**  
+**Project Name:**  Client Web
 **Team Name:**  
-**Cohort / Sprint:**  
 **Team Members:**  
+- Shaney Hoyohoy- Backend
+- Deepalakshmi - Full Stack
+- Thomas Lappas - Full Stack (Front End focused)
+- James Bustamante Data
+- Rosalina Geslani Huynh
+
 **Tech Stack:** 
 
 ## Project Overview
