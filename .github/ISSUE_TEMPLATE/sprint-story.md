@@ -9,19 +9,16 @@ assignees: ''
 
 ## User Story
 
-As a **[type of user]**, I want **[goal]**, so that **[benefit]**.
+As a system admin, I need user roles so I can control access to system features.
 
-## Acceptance Criteria
 
-- [ ] Clear, testable outcome 1
-- [ ] Clear, testable outcome 2
-- [ ] Edge cases considered
-- [ ] Works across intended roles (if applicable)
+**Acceptance Criteria:**
+User table created in Supabase
+Role defaults to COMPANY_REP
+
 
 ## Definition of Done
 
-- [ ] Code implemented
-- [ ] Code reviewed
-- [ ] No errors
-- [ ] Meets acceptance criteria
-- [ ] Merged into main branch
+-Model validated in DB
+No plaintext passwords
+
