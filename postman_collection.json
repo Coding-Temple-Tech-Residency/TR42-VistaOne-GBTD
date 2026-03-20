@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "Vendor Web App API",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-123456789000",
+    "description": "Postman collection for Vendor Web Application (FastAPI + Supabase Auth)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Me",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{base_url}}/me"
+      }
+    },
+    {
+      "name": "Vendors",
+      "item": [
+        {
+          "name": "List Vendors",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/vendors"
+          }
+        },
+        {
+          "name": "Create Vendor",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Test Vendor\", \"data\": {\"category\": \"Oil & Gas\"}}"
+            },
+            "url": "{{base_url}}/vendors"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Work Orders",
+      "item": [
+        {
+          "name": "List Work Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{base_url}}/workorders"
+          }
+        },
+        {
+          "name": "Create Work Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"vendor_id\": 1, \"workorder_status\": \"open\", \"total_amount\": 1000}"
+            },
+            "url": "{{base_url}}/workorders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Work Order Items",
+      "item": [
+        {
+          "name": "Add Work Order Item",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"description\": \"Labor\", \"quantity\": 2, \"unit_price\": 100, \"subtotal\": 200}"
+            },
+            "url": "{{base_url}}/workorders/1/items"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List Invoices",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{base_url}}/invoices"
+          }
+        },
+        {
+          "name": "Create Invoice",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"workorder_id\": 1, \"vendor_id\": 1, \"invoice_number\": \"INV-001\", \"invoice_status\": \"pending\", \"subtotal\": 1000, \"total_amount\": 1000}"
+            },
+            "url": "{{base_url}}/invoices"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contractors",
+      "item": [
+        {
+          "name": "List Contractors",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{base_url}}/contractors"
+          }
+        },
+        {
+          "name": "Create Contractor",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"John Doe\", \"assignment\": \"Pipeline Repair\"}"
+            },
+            "url": "{{base_url}}/contractors"
+          }
+        }
+      ]
+    }
+  ]
+}

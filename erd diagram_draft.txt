@@ -1,0 +1,86 @@
+erDiagram
+
+    USER_PROFILES {
+        uuid id PK
+        uuid auth_user_id UK
+        string role
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    VENDORS {
+        bigint id PK
+        jsonb data
+        string name
+        timestamp inserted_at
+        timestamp updated_at
+    }
+
+    WORKORDERS {
+        int workorder_id PK
+        uuid auth_user_id FK
+        int vendor_id FK
+        string workorder_status
+        numeric total_amount
+        string work_description
+        string city
+        string state
+        string zip_code
+        string country
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    WORKORDER_ITEMS {
+        int workorder_item_id PK
+        int workorder_id FK
+        string description
+        int quantity
+        numeric unit_price
+        numeric subtotal
+        timestamp created_at
+    }
+
+    INVOICES {
+        int invoice_id PK
+        int workorder_id FK
+        int vendor_id FK
+        uuid auth_user_id FK
+        string invoice_number
+        string invoice_status
+        numeric subtotal
+        numeric tax_amount
+        numeric discount_amount
+        numeric total_amount
+        date due_date
+        date paid_date
+        string payment_method
+        string billing_address
+        string city
+        string state
+        string zip_code
+        string country
+        text notes
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    CONTRACTORS {
+        int category_id PK
+        string name
+        string assignment
+        int invoice_id
+        uuid auth_user_id FK
+        timestamp created_at
+    }
+
+    %% RELATIONSHIPS
+    USER_PROFILES ||--o{ WORKORDERS : "owns"
+    USER_PROFILES ||--o{ INVOICES : "submits"
+    USER_PROFILES ||--o{ CONTRACTORS : "created by"
+
+    VENDORS ||--o{ WORKORDERS : "assigned to"
+    VENDORS ||--o{ INVOICES : "billed by"
+
+    WORKORDERS ||--o{ WORKORDER_ITEMS : "contains"
+    WORKORDERS ||--o{ INVOICES : "generates"
